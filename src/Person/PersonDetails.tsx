@@ -29,17 +29,20 @@ const PersonDetails: React.FC<Props> = props => {
     width: 100%;
     height: 100%;
     flex: 1;
+  `;
 
+  const buttonSpacing = css`
+    padding: 12px 8px !important;
   `;
 
   return (
     <div className={cn(className, 'PersonDetails')} css={style}>
-      {accountData.credits.slice(0, maxCredits).map( credit => {
+      {accountData.credits.slice(0, maxCredits).map((credit, i) => {
         return (
-          <PersonCredit key={credit.id} creditData={credit} />
+          <PersonCredit key={credit.id} creditData={credit} i={i} />
         )
       })}
-      <Button className="contact" color="primary">
+      <Button className="contact" color="primary" css={buttonSpacing}>
         Contact this person
       </Button>
     </div>

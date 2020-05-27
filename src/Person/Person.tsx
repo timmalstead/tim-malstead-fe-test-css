@@ -3,7 +3,7 @@
 import React from 'react';
 import { css, jsx } from '@emotion/core';
 import cn from 'classnames';
-import { useTheme } from '@material-ui/core/styles';
+// import { useTheme } from '@material-ui/core/styles';
 
 import PersonCard from './PersonCard';
 import { Account } from '../App';
@@ -17,7 +17,7 @@ type Props = {
 
 const Person: React.FC<Props> = props => {
   const { className = '', accountData } = props;
-  const theme = useTheme();
+  // const theme = useTheme();
   const style = css`
     display: flex;
     width: 100%;
@@ -32,9 +32,7 @@ const Person: React.FC<Props> = props => {
     }
 
     .PersonDetails-container {
-      width: 500px;
-      padding: ${theme.spacing(1)}px;
-
+      width: 532px;
       border: 2px solid ${COLORS.BORDER_COLOR};
       border-left: none;
     }
