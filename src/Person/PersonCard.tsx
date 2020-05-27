@@ -6,6 +6,8 @@ import { Account } from '../App';
 import Typography from '@material-ui/core/Typography';
 import { useTheme } from '@material-ui/core/styles';
 import { COLORS } from '../colors';
+import BREAKPOINTS from '../breakpoints';
+
 type Props = {
   className?: string;
   accountData: Account;
@@ -24,6 +26,19 @@ const PersonCard: React.FC<Props> = props => {
     justify-content: center;
     align-items: center;
     padding: ${theme.spacing(2)}px 0;
+
+    @media (max-width: ${BREAKPOINTS[0]}px) {
+      flex-direction: row;
+    }
+
+    @media (max-width: ${BREAKPOINTS[1]}px) {
+      flex-direction: column;
+    }
+
+    .textHolder {
+      text-align: center;
+      margin: 0 ${theme.spacing(3)}px;
+    }
 
     .PersonCard-Avatar {
       height: 150px;
@@ -52,12 +67,14 @@ const PersonCard: React.FC<Props> = props => {
         src={accountData.accountImage.url}
         alt={fullName}
       />
-      <Typography className="link" variant="h6">
-        {fullName}
-      </Typography>
-      <Typography variant="body2">
-        {`${accountData.locationCity}, ${accountData.locationArea}`}
-      </Typography>
+      <span className="textHolder">
+        <Typography className="link" variant="h6">
+          {fullName}
+        </Typography>
+        <Typography variant="body2">
+          {`${accountData.locationCity}, ${accountData.locationArea}`}
+        </Typography>
+      </span>
     </div>
   );
 

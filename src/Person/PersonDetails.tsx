@@ -6,6 +6,7 @@ import { css, jsx } from '@emotion/core';
 import Button from '@material-ui/core/Button';
 import { Account } from '../App';
 import PersonCredit from './PersonCredit';
+import { COLORS } from '../colors'
 
 
 type Props = {
@@ -21,9 +22,11 @@ const PersonDetails: React.FC<Props> = props => {
     maxCredits = 3
   } = props;
 
+  console.log(accountData)
   // const theme = useTheme();
 
   const style = css`
+  background-color: ${COLORS.LIGHT_BG};
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -31,7 +34,7 @@ const PersonDetails: React.FC<Props> = props => {
     flex: 1;
   `;
 
-  const buttonSpacing = css`
+  const buttonStyle = css`
     padding: 12px 8px !important;
   `;
 
@@ -42,8 +45,8 @@ const PersonDetails: React.FC<Props> = props => {
           <PersonCredit key={credit.id} creditData={credit} i={i} />
         )
       })}
-      <Button className="contact" color="primary" css={buttonSpacing}>
-        Contact this person
+      <Button className="contact" color="primary" css={buttonStyle}>
+        Contact {accountData.firstName} {accountData.lastName}
       </Button>
     </div>
   )

@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import { useTheme } from '@material-ui/core/styles';
 import { Credit } from '../App';
 import { COLORS } from '../colors';
+import BREAKPOINTS from '../breakpoints';
 
 type Props = {
   className?: string;
@@ -17,14 +18,17 @@ const PersonCredit: React.FC<Props> = props => {
   const { className = '', creditData, i } = props;
   const theme = useTheme();
 
-
   const style = css`
     display: flex;
     width: 100%;
     justify-content: space-between;
     background-color: ${i % 2 === 0 ? COLORS.BG_COLOR : "transparent"};
 
+  
+
     .credit-top {
+
+      color: ${COLORS.DARK_TEXT};
       margin: ${theme.spacing(1)}px 0;
 
       &-left {
@@ -58,6 +62,12 @@ const PersonCredit: React.FC<Props> = props => {
       border-bottom: 1px solid ${COLORS.BORDER_COLOR};
     }
 
+    .credit-top,.credit-bottom {
+      @media (max-width: ${BREAKPOINTS[2]}px) {
+      font-size: 4.6vw;
+    }
+    }
+
   `;
 
   return (
@@ -70,12 +80,13 @@ const PersonCredit: React.FC<Props> = props => {
           {creditData.productionType}
         </Typography>
       </div>
+
       <div className="PersonCredit-right">
         <Typography className="credit-top credit-top-right" variant="body1">
           {creditData.productionTitle}
         </Typography>
         <Typography className="credit-bottom credit-bottom-right" variant="body1">
-          {creditData.year}
+          {creditData.company} - {creditData.year}
         </Typography>
       </div>
     </div>

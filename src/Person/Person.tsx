@@ -9,6 +9,7 @@ import PersonCard from './PersonCard';
 import { Account } from '../App';
 import PersonDetails from './PersonDetails';
 import { COLORS } from '../colors';
+import BREAKPOINTS from '../breakpoints';
 
 type Props = {
   className?: string;
@@ -22,6 +23,11 @@ const Person: React.FC<Props> = props => {
     display: flex;
     width: 100%;
     justify-content: center;
+    flex-direction: row;
+
+  @media (max-width: ${BREAKPOINTS[0]}px) {
+    flex-direction: column;
+  }
 
     .Person {
       width: 850px;
@@ -35,6 +41,16 @@ const Person: React.FC<Props> = props => {
       width: 532px;
       border: 2px solid ${COLORS.BORDER_COLOR};
       border-left: none;
+      @media (max-width: ${BREAKPOINTS[0]}px) {
+        border-right: none;
+        border-top: none;
+      }
+    }
+
+    .PersonCard-container, .PersonDetails-container {
+      @media (max-width: ${BREAKPOINTS[0]}px) {
+        width: 100vw;
+      }
     }
   `;
 
